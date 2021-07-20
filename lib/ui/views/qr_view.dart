@@ -7,12 +7,12 @@ import 'package:new_smarthome_project/constants/route_name.dart';
 import 'package:new_smarthome_project/locator.dart';
 import 'package:new_smarthome_project/models/device_data.dart';
 import 'package:new_smarthome_project/services/navigator_service.dart';
+import 'package:new_smarthome_project/services/sqflite_service.dart';
+import 'package:new_smarthome_project/ui/views/register_device_view.dart';
+import 'package:path/path.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class QRViewExample extends StatefulWidget {
-  const QRViewExample({
-    Key key,
-  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _QRViewExampleState();
@@ -23,7 +23,9 @@ class _QRViewExampleState extends State<QRViewExample> {
   QRViewController controller;
   Device device;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+  final Db _db = locator<Db>();
   final NavigationService _navigationService = locator<NavigationService>();
+  //final NavigationService _navigationService = locator<NavigationService>();
 
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
@@ -137,6 +139,7 @@ class _QRViewExampleState extends State<QRViewExample> {
       device = Device.fromMap(data);
       print(device);
       _navigationService.navigateTo(RegisterDeviceViewRoute);
+      //_navigationService.navigateTo(RegisterDeviceViewRoute);
     }
   }
   void _onQRViewCreated(QRViewController controller) {

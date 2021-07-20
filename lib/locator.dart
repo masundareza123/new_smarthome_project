@@ -6,6 +6,7 @@ import 'package:new_smarthome_project/services/sqflite_service.dart';
 GetIt locator = GetIt.instance;
 
 void setupLocator() {
+  //locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => RMQService());
   locator.registerLazySingleton(() => Db());
