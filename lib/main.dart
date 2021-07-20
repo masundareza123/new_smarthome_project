@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_smarthome_project/ui/views/dashboard_view.dart';
 import 'package:new_smarthome_project/ui/views/home_view.dart';
 import 'package:new_smarthome_project/ui/views/register_device_view.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RegisterDeviceView(),
+      home: DashboardView(),
     );
   }
 }

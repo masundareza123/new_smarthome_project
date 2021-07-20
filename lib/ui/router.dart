@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_smarthome_project/constants/route_name.dart';
 import 'package:new_smarthome_project/ui/views/home_view.dart';
+import 'package:new_smarthome_project/ui/views/qr_view.dart';
 import 'package:new_smarthome_project/ui/views/register_device_view.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings){
@@ -14,6 +15,11 @@ Route<dynamic> generateRoute(RouteSettings settings){
       return _pageRoute(
           routeName: settings.name,
           viewToShow: RegisterDeviceView()
+      );
+    case QrViewRoute:
+      return _pageRoute(
+          routeName: settings.name,
+          viewToShow: QRViewExample()
       );
     default:
       return MaterialPageRoute(

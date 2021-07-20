@@ -1,5 +1,7 @@
+import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:new_smarthome_project/ui/shared/ui_helper.dart';
+import 'package:new_smarthome_project/ui/views/qr_view.dart';
 import 'package:new_smarthome_project/ui/widgets/textfield_widget.dart';
 
 class RegisterDeviceView extends StatefulWidget {
@@ -10,6 +12,11 @@ class RegisterDeviceView extends StatefulWidget {
 
 class _RegisterDeviceViewState extends State<RegisterDeviceView> {
   TextEditingController guidController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController macController = TextEditingController();
+  TextEditingController typeController = TextEditingController();
+  TextEditingController versionController = TextEditingController();
+  TextEditingController minorController = TextEditingController();
   TextEditingController test = TextEditingController();
   /*final List<Map<String, dynamic>> _items = [
     {
@@ -45,57 +52,54 @@ class _RegisterDeviceViewState extends State<RegisterDeviceView> {
       'label': 'Value 8',
     },
   ];*/
-  /*String _myActivity;
-  String _myActivityResult;
+  String _myActivity;
   final formKey = new GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
     _myActivity = '';
-    _myActivityResult = '';
   }
-
-  _saveForm() {
-    var form = formKey.currentState;
-    if (form.validate()) {
-      form.save();
-      setState(() {
-        _myActivityResult = _myActivity;
-      });
-    }
-  }*/
   @override
   Widget build(BuildContext context) {
     test.text = 'text';
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: Text("Registration Device", style: TextStyle(color: Colors.black),),
-          elevation: 0,
-          actions: [
-            Icon(Icons.qr_code_scanner, color: Colors.black,),
-            horizontalSpaceSmall
-          ],
-        ),
+          appBar: AppBar(
+            backgroundColor: Colors.redAccent,
+            title: Text("Smarthome"),
+            actions: [
+              InkWell(
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) => QRViewExample()));
+                },
+                child: Icon(Icons.qr_code_scanner),
+              ),
+              horizontalSpaceSmall
+            ],
+          ),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(left: 8, right: 8, top: 20),
             child: Form(
               child: Column(
                 children: <Widget>[
+                  Text("Register Device", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
                   TextFieldWidget(title: "Serial Number", controller: test, readOnly: true,),
                   TextFieldWidget(title: "Device Name", controller: test, readOnly: false,),
-                  /*SelectFormField(
-                    type: SelectFormFieldType.dropdown, // or can be dialog
-                    labelText: 'Select Value',
-                    items: _items,
-                    onChanged: (val) => print(val),
-                    onSaved: (val) => print(val),
-                  ),*/
-                  /*DropDownFormField(
-                    titleText: 'My workout',
+                /*SelectFormField(
+                  type: SelectFormFieldType.dropdown, // or can be dialog
+                  initialValue: 'circle',
+                  icon: Icon(Icons.format_shapes),
+                  labelText: 'Shape',
+                  items: _items,
+                  onChanged: (val) => print(val),
+                  onSaved: (val) => print(val),
+                ),*/
+                  DropDownFormField(
+                    titleText: 'Select The Rules',
                     hintText: 'Please choose one',
                     value: _myActivity,
                     onSaved: (value) {
@@ -110,37 +114,41 @@ class _RegisterDeviceViewState extends State<RegisterDeviceView> {
                     },
                     dataSource: [
                       {
-                        "display": "Running",
-                        "value": "Running",
+                        "display": "Rule 1",
+                        "value": "1",
                       },
                       {
-                        "display": "Climbing",
-                        "value": "Climbing",
+                        "display": "Rule 2",
+                        "value": "11",
                       },
                       {
-                        "display": "Walking",
-                        "value": "Walking",
+                        "display": "Rule 3",
+                        "value": "111",
                       },
                       {
-                        "display": "Swimming",
-                        "value": "Swimming",
+                        "display": "Rule 4",
+                        "value": "1111",
                       },
                       {
-                        "display": "Soccer Practice",
-                        "value": "Soccer Practice",
+                        "display": "Rule 5",
+                        "value": "11111",
                       },
                       {
-                        "display": "Baseball Practice",
-                        "value": "Baseball Practice",
+                        "display": "Rule 6",
+                        "value": "111111",
                       },
                       {
-                        "display": "Football Practice",
-                        "value": "Football Practice",
+                        "display": "Rule 7",
+                        "value": "1111111",
+                      },
+                      {
+                        "display": "Rule 8",
+                        "value": "11111111",
                       },
                     ],
                     textField: 'display',
                     valueField: 'value',
-                  ),*/
+                  ),
                   TextFieldWidget(title: "Mac", controller: test, readOnly: true),
                   TextFieldWidget(title: "Type", controller: test, readOnly: true),
                   TextFieldWidget(title: "Version", controller: test, readOnly: true),
