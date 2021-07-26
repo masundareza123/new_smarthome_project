@@ -141,7 +141,7 @@ class _QRViewExampleState extends State<QRViewExample> {
       // print(data);
       // device = Device.fromMap(data);
       // print('ini value nya');
-      print(device);
+      // print(device);
       _navigationService.navigateTo(RegisterDeviceViewRoute);
       //_navigationService.navigateTo(RegisterDeviceViewRoute);
     }

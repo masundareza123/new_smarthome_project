@@ -130,10 +130,11 @@ class _RegisterDeviceViewState extends State<RegisterDeviceView> {
                           DropDownFormField(
                             titleText: 'Select The Rules',
                             hintText: 'Please choose one',
+                            // contentPadding: ,
                             value: _myActivity,
                             onSaved: (value) {
                               setState(() {
-                                _myActivity = value;
+                                model.qtyController = value;
                               });
                             },
                             onChanged: (value) {
@@ -182,7 +183,20 @@ class _RegisterDeviceViewState extends State<RegisterDeviceView> {
                           TextFieldWidget(title: "Mac", controller: model.macController, readOnly: true),
                           TextFieldWidget(title: "Type", controller: model.typeController, readOnly: true),
                           TextFieldWidget(title: "Version", controller: model.versionController, readOnly: true),
-                          TextFieldWidget(title: "Minor", controller:model.minorController, readOnly: true)
+                          TextFieldWidget(title: "Minor", controller:model.minorController, readOnly: true),
+
+
+                          MaterialButton(
+                            padding: EdgeInsets.all(5),
+                            child:Container(
+                              child: Text('Submit',style: TextStyle(fontSize: 15),),decoration: BoxDecoration(
+                              color: Colors.blue
+                            ),
+                            ),
+                              onPressed: (){
+                            model.RegisterDevice();
+
+                          })
                         ],
                       )
                   ),
