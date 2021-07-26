@@ -16,6 +16,7 @@ class TextFieldWidget extends StatelessWidget {
           readOnly: readOnly,
           decoration: InputDecoration(
               labelText: '$title',
+              // contentPadding: ,
               focusColor: Colors.redAccent
           ),
         ),

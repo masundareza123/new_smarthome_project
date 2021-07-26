@@ -7,6 +7,7 @@ import 'package:new_smarthome_project/ui/widgets/textfield_widget.dart';
 import 'package:new_smarthome_project/viewmodels/register_view_model.dart';
 import 'package:stacked/stacked.dart';
 
+
 class RegisterDeviceView extends StatefulWidget {
 
   @override
@@ -14,13 +15,16 @@ class RegisterDeviceView extends StatefulWidget {
 }
 
 class _RegisterDeviceViewState extends State<RegisterDeviceView> {
-  TextEditingController guidController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController macController = TextEditingController();
-  TextEditingController typeController = TextEditingController();
-  TextEditingController versionController = TextEditingController();
-  TextEditingController minorController = TextEditingController();
-  TextEditingController test = TextEditingController();
+  RegisterDeviceViewModel model=RegisterDeviceViewModel();
+
+  // TextEditingController guidController = TextEditingController();
+  // TextEditingController nameController = TextEditingController();
+  // TextEditingController macController = TextEditingController();
+  // TextEditingController typeController = TextEditingController();
+  // TextEditingController versionController = TextEditingController();
+  // TextEditingController minorController = TextEditingController();
+  // TextEditingController test = TextEditingController();
+
   Device device;
   /*final List<Map<String, dynamic>> _items = [
     {
@@ -66,16 +70,29 @@ class _RegisterDeviceViewState extends State<RegisterDeviceView> {
   }
   @override
   Widget build(BuildContext context) {
-    test.text = 'text';
-    guidController.text = '${device.guid}';
-    nameController.text = '${device.name}';
-    macController.text = '${device.mac}';
-    typeController.text = '${device.type}';
-    versionController.text = '${device.version}';
-    minorController.text = '${device.minor}';
+
+    // print(sh)
+    // ReactiveViewModel.
+    // test.text = 'text';
+    // guidController.text = '${device.guid}';
+    // nameController.text = '${device.name}';
+    // macController.text = '${device.mac}';
+    // typeController.text = '${device.type}';
+    // versionController.text = '${device.version}';
+    // minorController.text = '${device.minor}';
+    // print('${device.guid}');
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => RegisterDeviceViewModel(),
+
+      onModelReady: (model) {
+        model.getTask();
+        // model.Swowdata();
+        // print(model.busy);
+        // model.openLocationSetting();
+        // model.getTask();
+      },
       builder: (context,model,child) => SafeArea(
+        // mode
           child: Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.redAccent,
@@ -99,8 +116,8 @@ class _RegisterDeviceViewState extends State<RegisterDeviceView> {
                       child: Column(
                         children: <Widget>[
                           Text("Register Device", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                          TextFieldWidget(title: "Serial Number", controller: guidController, readOnly: true,),
-                          TextFieldWidget(title: "Device Name", controller: nameController, readOnly: false,),
+                          TextFieldWidget(title: "Serial Number", controller: model.guidController,readOnly: true,),
+                          TextFieldWidget(title: "Device Name", controller: model.nameController, readOnly: false,),
                           /*SelectFormField(
                   type: SelectFormFieldType.dropdown, // or can be dialog
                   initialValue: 'circle',
@@ -161,10 +178,11 @@ class _RegisterDeviceViewState extends State<RegisterDeviceView> {
                             textField: 'display',
                             valueField: 'value',
                           ),
-                          TextFieldWidget(title: "Mac", controller: macController, readOnly: true),
-                          TextFieldWidget(title: "Type", controller: typeController, readOnly: true),
-                          TextFieldWidget(title: "Version", controller: versionController, readOnly: true),
-                          TextFieldWidget(title: "Minor", controller: minorController, readOnly: true)
+                          // model.showdata()
+                          TextFieldWidget(title: "Mac", controller: model.macController, readOnly: true),
+                          TextFieldWidget(title: "Type", controller: model.typeController, readOnly: true),
+                          TextFieldWidget(title: "Version", controller: model.versionController, readOnly: true),
+                          TextFieldWidget(title: "Minor", controller:model.minorController, readOnly: true)
                         ],
                       )
                   ),

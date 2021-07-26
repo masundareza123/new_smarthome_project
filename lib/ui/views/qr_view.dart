@@ -11,6 +11,7 @@ import 'package:new_smarthome_project/services/sqflite_service.dart';
 import 'package:new_smarthome_project/ui/views/register_device_view.dart';
 import 'package:path/path.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class QRViewExample extends StatefulWidget {
 
@@ -131,12 +132,15 @@ class _QRViewExampleState extends State<QRViewExample> {
   }
 
   void inputQrData(Barcode result) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     if (result.code != null){
       String jsonData = await result.code;
       print(jsonData);
-      final data = json.decode(jsonData);
-      print(data);
-      device = Device.fromMap(data);
+      await prefs.setString('datadevice',jsonData);
+      // final data = json.decode(jsonData);
+      // print(data);
+      // device = Device.fromMap(data);
+      // print('ini value nya');
       print(device);
       _navigationService.navigateTo(RegisterDeviceViewRoute);
       //_navigationService.navigateTo(RegisterDeviceViewRoute);
