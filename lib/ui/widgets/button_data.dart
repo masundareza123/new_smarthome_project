@@ -53,7 +53,7 @@ class _ButtonDataState extends State<ButtonData> {
                                           children: [
                                             Icon(FontAwesomeIcons.lightbulb, size: 26,),
                                             horizontalSpaceSmall,
-                                            Text('${device.type}', style: TextStyle(fontSize: 20),maxLines: 1,)
+                                            Text('${device.name}', style: TextStyle(fontSize: 20),maxLines: 1,)
                                           ],
                                         ),
                                       ),

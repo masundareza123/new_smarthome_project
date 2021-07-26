@@ -87,10 +87,10 @@ void RegisterDevice(BuildContext context)async{
         device = Device(
           guid,
           mac,
+          version,
           type,
           quantity,
           name,
-          version,
           minor
         );
         print("this is serial number $guid");
