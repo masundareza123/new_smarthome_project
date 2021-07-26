@@ -23,6 +23,7 @@ class _RegisterDeviceViewState extends State<RegisterDeviceView> {
   // TextEditingController typeController = TextEditingController();
   // TextEditingController versionController = TextEditingController();
   // TextEditingController minorController = TextEditingController();
+  TextEditingController quantityController = TextEditingController();
   // TextEditingController test = TextEditingController();
 
   Device device;
@@ -127,59 +128,59 @@ class _RegisterDeviceViewState extends State<RegisterDeviceView> {
                   onChanged: (val) => print(val),
                   onSaved: (val) => print(val),
                 ),*/
-                          DropDownFormField(
-                            titleText: 'Select The Rules',
-                            hintText: 'Please choose one',
-                            // contentPadding: ,
-                            value: _myActivity,
-                            onSaved: (value) {
-                              setState(() {
-                                model.qtyController = value;
-                              });
-                            },
-                            onChanged: (value) {
-                              setState(() {
-                                _myActivity = value;
-                              });
-                            },
-                            dataSource: [
-                              {
-                                "display": "Rule 1",
-                                "value": "1",
-                              },
-                              {
-                                "display": "Rule 2",
-                                "value": "11",
-                              },
-                              {
-                                "display": "Rule 3",
-                                "value": "111",
-                              },
-                              {
-                                "display": "Rule 4",
-                                "value": "1111",
-                              },
-                              {
-                                "display": "Rule 5",
-                                "value": "11111",
-                              },
-                              {
-                                "display": "Rule 6",
-                                "value": "111111",
-                              },
-                              {
-                                "display": "Rule 7",
-                                "value": "1111111",
-                              },
-                              {
-                                "display": "Rule 8",
-                                "value": "11111111",
-                              },
-                            ],
-                            textField: 'display',
-                            valueField: 'value',
-                          ),
+                          // DropDownFormField(
+                          //   titleText: 'Select The Rules',
+                          //   hintText: 'Please choose one',
+                          //   value: _myActivity,
+                          //   onSaved: (value) {
+                          //     setState(() {
+                          //       model.qtyController = value;
+                          //     });
+                          //   },
+                          //   onChanged: (value) {
+                          //     setState(() {
+                          //       _myActivity = value;
+                          //     });
+                          //   },
+                          //   dataSource: [
+                          //     {
+                          //       "display": "Rule 1",
+                          //       "value": "1",
+                          //     },
+                          //     {
+                          //       "display": "Rule 2",
+                          //       "value": "11",
+                          //     },
+                          //     {
+                          //       "display": "Rule 3",
+                          //       "value": "111",
+                          //     },
+                          //     {
+                          //       "display": "Rule 4",
+                          //       "value": "1111",
+                          //     },
+                          //     {
+                          //       "display": "Rule 5",
+                          //       "value": "11111",
+                          //     },
+                          //     {
+                          //       "display": "Rule 6",
+                          //       "value": "111111",
+                          //     },
+                          //     {
+                          //       "display": "Rule 7",
+                          //       "value": "1111111",
+                          //     },
+                          //     {
+                          //       "display": "Rule 8",
+                          //       "value": "11111111",
+                          //     },
+                          //   ],
+                          //   textField: 'display',
+                          //   valueField: 'value',
+                          // ),
                           // model.showdata()
+                          TextFieldWidget(title: "Rules", controller: model.quantityController, readOnly: true),
                           TextFieldWidget(title: "Mac", controller: model.macController, readOnly: true),
                           TextFieldWidget(title: "Type", controller: model.typeController, readOnly: true),
                           TextFieldWidget(title: "Version", controller: model.versionController, readOnly: true),
@@ -194,7 +195,7 @@ class _RegisterDeviceViewState extends State<RegisterDeviceView> {
                             ),
                             ),
                               onPressed: (){
-                            model.RegisterDevice();
+                            model.RegisterDevice(context);
 
                           })
                         ],

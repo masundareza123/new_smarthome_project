@@ -17,7 +17,7 @@ class RegisterDeviceViewModel extends BaseModel {
   TextEditingController typeController = TextEditingController();
   TextEditingController versionController = TextEditingController();
   TextEditingController minorController = TextEditingController();
-  TextEditingController qtyController = TextEditingController();
+  TextEditingController quantityController = TextEditingController();
   Device device;
   final Db _db = locator<Db>();
   final NavigationService _navigationService = locator<NavigationService>();
@@ -48,6 +48,7 @@ class RegisterDeviceViewModel extends BaseModel {
         var name=result['name'];
         var type= result['type'];
         var mac =result['mac'];
+        var quantity = result['quantity'];
         // var quantity=result['quantity'];
         var version=result['version'];
         var minor=result['minor'];
@@ -56,6 +57,7 @@ class RegisterDeviceViewModel extends BaseModel {
     nameController.text=name;
     typeController.text=type;
     macController.text=mac;
+    quantityController.text=quantity;
     versionController.text=version;
     minorController.text=minor;
     // setBusy(false);
@@ -64,33 +66,34 @@ class RegisterDeviceViewModel extends BaseModel {
     // guidController.text='123';
   }
 
-void RegisterDevice()async{
+void RegisterDevice(BuildContext context)async{
 
     try{
       if (guidController.text.length > 0 &&
           macController.text.length > 0 &&
           typeController.text.length > 0 &&
-          qtyController.text.length > 0 &&
+          quantityController.text.length > 0 &&
           nameController.text.length > 0 &&
           versionController.text.length > 0 &&
           minorController.text.length > 0) {
-        var serialnumber = guidController.text;
+        var guid = guidController.text;
         var mac = macController.text;
         var type = typeController.text;
-        var qty = qtyController.text;
+        var quantity = quantityController.text;
         var name = nameController.text;
         var version = versionController.text;
         var minor = minorController.text;
+        //guid TEXT PRIMARY KEY, mac TEXT, type TEXT, quantity TEXT, name TEXT, version TEXT, minor TEXT
         device = Device(
-          serialnumber,
+          guid,
           mac,
           type,
-          qty,
+          quantity,
           name,
           version,
-          minor,
+          minor
         );
-        print("this is serial number $serialnumber");
+        print("this is serial number $guid");
         print(device.toMap().toString());
         await _db.addDevice(device);
         print("added");
