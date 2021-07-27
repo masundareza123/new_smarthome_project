@@ -87,15 +87,17 @@ void RegisterDevice(BuildContext context)async{
         device = Device(
           guid,
           mac,
-          version,
-          type,
-          quantity,
+          minor,
           name,
-          minor
+          quantity,
+          type,
+          version
+
         );
         print("this is serial number $guid");
         print(device.toMap().toString());
         await _db.addDevice(device);
+        print('$device');
         print("added");
         _navigationService.navigateTo(DashboardViewRoute);
       }
