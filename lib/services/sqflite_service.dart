@@ -7,9 +7,9 @@ import 'package:sqflite/sqflite.dart';
 
 import 'package:new_smarthome_project/models/device_data.dart';
 class Db{
+  //static final Db instance = Db._createObject();
   static Db _db;
   static Database _database;
-
   Db._createObject();
 
   factory Db() {
@@ -61,6 +61,7 @@ class Db{
     final db = await database;
     var response = await db.query('devices');
     List<Device> list = response.map((c) => Device.fromMap(c)).toList();
+    print('$response');
     return list;
   }
 }

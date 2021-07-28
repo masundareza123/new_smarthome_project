@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_smarthome_project/ui/views/home_view.dart';
 import 'package:new_smarthome_project/ui/views/register_device_view.dart';
+import 'package:new_smarthome_project/ui/views/register_manual_view.dart';
 
 class DashboardView extends StatefulWidget {
 
@@ -13,7 +14,7 @@ class _DashboardViewState extends State<DashboardView> {
   int currentTab = 0;
   final List<Widget> screens = [
     HomeView(),
-    RegisterDeviceView(),
+    RegisterManualView(),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
@@ -71,7 +72,7 @@ class _DashboardViewState extends State<DashboardView> {
                             minWidth: 40,
                             onPressed: (){
                               setState(() {
-                                currentScreen = RegisterDeviceView();
+                                currentScreen = RegisterManualView();
                                 currentTab = 1;
                               });
                             },
@@ -83,7 +84,7 @@ class _DashboardViewState extends State<DashboardView> {
                                   color: currentTab == 1 ? Colors.redAccent : Colors.black26,
                                 ),
                                 Text(
-                                  "News",
+                                  "Register Device",
                                   style: TextStyle(
                                     color: currentTab == 1 ? Colors.redAccent : Colors.black26,
                                   ),
